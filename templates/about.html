@@ -1,0 +1,36 @@
+<!-- templates/about.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About Us - NewsScope</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo">
+      <img src="{{ url_for('static', filename='images/logo.png') }}" alt="NewsScope Logo" class="logo-img">
+    </div>
+    <ul class="nav-links">
+      <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+      <li><a href="/news" class="{% if request.path == '/news' %}active{% endif %}">Daily News</a></li>
+      <li><a href="/about" class="{% if request.path == '/about' %}active{% endif %}">About Us</a></li>
+      <li><a href="/contact" class="{% if request.path == '/contact' %}active{% endif %}">Contact</a></li>
+    </ul>
+  </nav>
+
+  <section class="about-content">
+    <h1>About Us</h1>
+    <p>We are a team of Computer Engineering students from Birzeit University. This website is our graduation project: <strong>Fake News Detection using Machine Learning</strong>.</p>
+    <p>Using NLP and AI, we built a system that analyzes the credibility of news articles. Our goal is to support media literacy and help users navigate the complex world of online information.</p>
+  </section>
+
+  <footer class="footer">
+    <p>&copy; 2025 NewsScope. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
