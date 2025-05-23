@@ -1,111 +1,88 @@
-/* === General Layout === */
-body {
-  font-family: "Helvetica Neue", sans-serif;
-  background-color: #F2EFE7;
-  color: #111;
-  line-height: 1.7;
+body.about-page {
+  font-family: 'Segoe UI', sans-serif;
   margin: 0;
   padding: 0;
-    display: flex;
-  flex-direction: column;
-  min-height: 100vh; /* full height of the screen */
-}
-
-/* === Navbar (reuses general styles if shared) === */
-.navbar {
-  height: 60px;
-  width: 95%;
-  margin: 20px auto;
-  padding: 0 40px;
-
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  background: transparent;              /* 🔄 شيل الخلفية */
-  backdrop-filter: none;                /* 🔄 شيل التغبيش */
-  -webkit-backdrop-filter: none;
-
-  border-radius: 0;                     /* 🔄 شيل الحواف الدائرية */
-  box-shadow: none;                     /* 🔄 شيل الظل */
-
-  position: fixed;
-  top: 20px;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-
-
-.nav-links {
-  list-style: none;
-  display: flex;
-  justify-content: center;      /* 🔄 يخليهم بالنص */
-  align-items: center;
-  gap: 20px;
-  flex: 1;                      /* تاخد المساحة المتبقية وتخليهم بالنص */
-}
-
-
-.nav-links li a {
-  text-decoration: none;        /* ✅ يشيل underline */
-  font-size: 15px;
-  color: #ffffff;               /* ✅ يخلي اللون أبيض */
-  padding: 8px 16px;
-  border-radius: 25px;
-  transition: all 0.3s ease;
-  text-align: center;
-}
-
-
-.nav-links li a:hover {
-  background-color: transparent;
-  border: 1px solid #66ccff; /* أزرق فاتح */
   color: #ffffff;
-  font-weight: bold;
-  box-shadow: none;
-  border-radius: 5px;
+  line-height: 1.8;
+  position: relative;
+  z-index: 0;
 }
 
-.nav-links li a.active {
-  background-color: transparent; /* شيل الخلفية */
-  border: 1px solid #ffffff;     /* خلي فيه إطار أبيض */
-  color: #fff;
-  font-weight: bold;
-  box-shadow: none;
-  border-radius: 5px;            /* خلي الحواف ناعمة شوي */
+#particles-js {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  /* background: radial-gradient(circle at top left, #0bacfc 0%, #050c9c 40%, #020122 100%); */
 }
 
-
-/* === About Section === */
 .about-content {
-  max-width: 900px;
-  margin: 130px auto;
-  padding: 0 40px;
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 160px auto 60px 80px;
+  max-width: 800px;
+  position: relative;
+  z-index: 1;
+  
 }
 
-.about-content h1 {
-  font-size: 36px;
-  margin-top: 10px;
-  color: #ffffff; /* ← أزرق غامق */
+.about-section {
+  background: rgba(255, 255, 255, 0.07);
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: floatIn 1s ease forwards;
+  margin-bottom: 20px;
+  
 }
 
-
-.about-content p {
-  font-size: 18px;
-  margin-top: 10px;
-}
-
-
-
-/* === Optional: Add animation on load === */
-.about-content {
-  animation: fadeIn 1s ease-in;
-}
-
-@keyframes fadeIn {
+@keyframes floatIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
+}
+
+.about-section h1,
+.about-section h2 {
+  font-weight: bold;
+  color: #ffffff;
+  margin-bottom: 16px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.4);
+}
+
+.about-section p,
+.about-section ul,
+.about-section blockquote {
+  margin-bottom: 20px;
+  color: #e0e0e0;
+}
+
+.about-section ul {
+  padding-left: 20px;
+}
+
+.about-section li {
+  margin-bottom: 10px;
+}
+
+.about-section blockquote {
+  font-style: italic;
+  padding-left: 20px;
+  border-left: 3px solid #66ccff;
+  color: #d0e6ff;
+}
+
+@media (max-width: 768px) {
+  .about-content {
+    margin: 150px 20px;
+    padding: 0;
+  }
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

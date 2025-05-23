@@ -48,25 +48,22 @@
   </nav>
 
 
-  <div class="headline-box">
-    <div id="particles-js"></div>
-
-    <h1 class="headline-title">
-      <span id="typed-text"></span>
-    </h1>
-    <p class="headline-sub">
-      <span id="typed-subtext"></span>
-    </p>
-
-    
-
-  </div>
 
   <!-- Main Section -->
   <div class="main-section">
 
+    <div class="headline-titles">
+      <h1 class="headline-title">
+        <span id="typed-text"></span>
+      </h1>
+      <p class="headline-sub">
+        <span id="typed-subtext"></span>
+      </p>
+    </div>
+
     <!-- الكرت الأبيض فوق الخلفية -->
     <div class="content-card">
+      <div id="particles-js"></div>
       <h2>Enter an article:</h2>
       <textarea id="articleInput" rows="10" placeholder="Write the article here..."></textarea><br>
       <button id="checkBtn" onclick="sendArticle()">Check</button>
@@ -209,7 +206,7 @@
         size: { value: 3, random: true },
         line_linked: {
           enable: true,
-          distance: 120,
+          distance: 150,
           color: "#ffffff",
           opacity: 0.3,
           width: 1
@@ -240,31 +237,31 @@
     });
   </script>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    // العنوان الرئيسي
-    new Typed("#typed-text", {
-      strings: ["Let's Find Out the News Authenticity !"],
-      typeSpeed: 20,
-      backSpeed: 25,
-      showCursor: false,
-      smartBackspace: false,
-      loop: false
-    });
-
-    // العنوان الفرعي (يتأخر شوي بعد الأول)
-    setTimeout(function () {
-      new Typed("#typed-subtext", {
-        strings: ["We don't guess. We analyze. Get a trustworthy prediction with explanation."],
-        typeSpeed: 15,
-        backSpeed: 20,
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      // العنوان الرئيسي
+      new Typed("#typed-text", {
+        strings: ["Let's Find Out the News Authenticity !"],
+        typeSpeed: 20,
+        backSpeed: 25,
         showCursor: false,
         smartBackspace: false,
         loop: false
       });
-    }, 1000); // 2.5 ثانية تأخير بعد العنوان الرئيسي
-  });
-</script>
+
+      // العنوان الفرعي (يتأخر شوي بعد الأول)
+      setTimeout(function () {
+        new Typed("#typed-subtext", {
+          strings: ["We don't guess. We analyze. Get a trustworthy prediction with explanation."],
+          typeSpeed: 15,
+          backSpeed: 20,
+          showCursor: false,
+          smartBackspace: false,
+          loop: false
+        });
+      }, 1000); // 2.5 ثانية تأخير بعد العنوان الرئيسي
+    });
+  </script>
 
 
 </body>

@@ -1,14 +1,16 @@
 <!-- templates/about.html -->
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <title>About Us - NewsScope</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
-
 </head>
-<body>
+
+<body class="about-page">
+  <div id="particles-js"></div>
 
   <nav class="navbar">
     <div class="logo">
@@ -23,14 +25,51 @@
   </nav>
 
   <section class="about-content">
+  
+  <div class="about-section">
     <h1>About Us</h1>
-    <p>We are a team of Computer Engineering students from Birzeit University. This website is our graduation project: <strong>Fake News Detection using Machine Learning</strong>.</p>
-    <p>Using NLP and AI, we built a system that analyzes the credibility of news articles. Our goal is to support media literacy and help users navigate the complex world of online information.</p>
-  </section>
+    <p>We are a team of Computer Engineering students from Birzeit University. This website is our graduation project:
+      <strong>Fake News Detection using Machine Learning</strong>.</p>
+    <p>Using NLP and AI, we built a system that analyzes the credibility of news articles. Our goal is to support media
+      literacy and help users navigate the complex world of online information.</p>
+  </div>
 
-  <footer class="footer">
-    <p>&copy; 2025 NewsScope. All rights reserved.</p>
-  </footer>
+  <div class="about-section">
+    <h2>Why We Chose This Project</h2>
+    <p>In today's digital world, misinformation spreads faster than ever. We believe that technology should empower users,
+      not mislead them. That’s why we developed a tool that automatically detects fake news using deep learning and
+      natural language processing.</p>
+  </div>
+
+  <div class="about-section">
+    <h2>Technologies We Used</h2>
+    <ul>
+      <li>Natural Language Processing (NLP)</li>
+      <li>Machine Learning: BiLSTM, DistilBERT</li>
+      <li>Explainable AI (XAI): SHAP</li>
+      <li>Flask, HTML, CSS, JavaScript</li>
+      <li>Browser Extension (Coming Soon)</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h2>Meet the Team</h2>
+    <ul>
+      <li>Israa Haj Ali – Lead ML Engineer & AI Integration</li>
+      <li>Teammate 2 – Full Stack Developer</li>
+      <li>Teammate 3 – Data Analyst & Content Curator</li>
+    </ul>
+  </div>
+
+  <div class="about-section">
+    <h2>Our Mission</h2>
+    <blockquote>“To provide a reliable and transparent tool that helps people identify fake news easily and understand why it’s fake.”</blockquote>
+  </div>
+
+
+
+</section>
 
 </body>
+
 </html>
