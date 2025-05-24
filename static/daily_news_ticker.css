@@ -1,0 +1,146 @@
+.news-box-container {
+  position: absolute;
+  top: 140px;
+  left: 120px;
+  width: 650px;
+  max-height: 600px;
+  /* background-color: rgba(0, 0, 0, 0.6); */
+  padding: 20px;
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.063);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(10px);
+  z-index: 5;
+}
+
+
+.news-box-title {
+  position: absolute;
+  top: 100px;
+  left: 40px;
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  z-index: 10;
+}
+
+
+.news-box-title {
+  color: white;
+  font-size: 18px;
+  margin-bottom: 12px;
+  font-weight: bold;
+  border-bottom: 1px solid #ffffff22;
+  padding-bottom: 8px;
+}
+
+.news-scroll-box {
+  height: 420px;
+  overflow: hidden;
+  position: relative;
+}
+
+.news-scroll-content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  animation: scroll-up 60s linear infinite;
+}
+
+@keyframes scroll-up {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+
+.news-entry {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  font-size: 15px;
+}
+
+.news-title {
+  color: #66ccff;
+  text-decoration: none;
+  font-weight: bold;
+  flex-grow: 1;
+}
+
+.source-logo {
+  width: 28px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.label {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 5px;
+  color: white;
+}
+
+.label-real {
+  background-color: #28a745;
+}
+
+.label-fake {
+  background-color: #dc3545;
+}
+
+@keyframes vertical-scroll {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+
+.ticker-item a {
+  color: #66ccff;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.source-logo {
+  width: 28px;
+  height: auto;
+  border-radius: 50%;
+}
+
+.label {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  margin-left: 8px;
+  color: white;
+}
+
+.label-real {
+  background-color: #28a745;
+}
+
+.label-fake {
+  background-color: #dc3545;
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-250%);
+  }
+}

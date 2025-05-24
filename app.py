@@ -99,6 +99,38 @@ def home():
 def about():
     return render_template("about.html")
 
+from utils import get_daily_articles_from_csv
+
+@app.route("/daily-news")
+def daily_news():
+    try:
+        articles = get_daily_articles_from_csv("C:\\Users\\future\\Desktop\\System5-20250412T203641Z-001\\System5\\News_Crawl\\news_data.csv")
+
+        results = []
+        for article in articles:
+            cleaned = clean_text(article["content"])
+            vectors, tokens = preprocess_for_word2vec_BiLSTM(cleaned)
+            prediction = predict_using_w2v_bilstm(bilstm_model, vectors)
+            prediction_value = float(prediction)
+            label = "Real" if prediction_value > 0.5 else "Fake"
+
+            results.append({
+            "title": article["title"],
+            "content": article["content"],
+            "url": article["url"],
+            "label": label,
+            "source": article.get("source", "default"),  # 👈 لازم يكون موجود
+            "confidence": round(prediction_value * 100 if label == "Real" else (1 - prediction_value) * 100, 2)
+        })
+
+
+        return render_template("daily_news.html", articles=results)
+
+    except Exception as e:
+        print("❌ Error in /daily-news:", e)
+        return "Internal Server Error", 500
+
+
 @app.route("/predict", methods=["POST"])
 def predict():
     try:

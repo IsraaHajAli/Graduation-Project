@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Daily News Ticker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='daily_news_ticker.css') }}">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="NewsScope Logo" class="logo-img">
+        </div>
+        <ul class="nav-links">
+            <li><a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a></li>
+            <li><a href="/daily-news" class="{% if request.path == '/daily-news' %}active{% endif %}">Daily News</a>
+            </li>
+            <li><a href="/about" class="{% if request.path == '/about' %}active{% endif %}">About Us</a></li>
+            <li><a href="/contact" class="{% if request.path == '/contact' %}active{% endif %}">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- News Box on the Left -->
+ 
+
+    <h2 class="news-box-title">📰 Daily Headlines</h2>
+
+    <div class="news-box-container">
+        <div class="news-scroll-box"> <!-- 👈 هذا مهم للحركة -->
+            <div class="news-scroll-content">
+                {% for article in articles %}
+                <div class="news-entry">
+                    <img src="{{ url_for('static', filename='logos/' + article.source|lower + '.png') }}"
+                        alt="{{ article.source }}" class="source-logo">
+                    <a href="{{ article.url }}" target="_blank" class="news-title">{{ article.title }}</a>
+                    <span class="label {{ 'label-real' if article.label == 'Real' else 'label-fake' }}">
+                        {{ article.label }} ({{ article.confidence }}%)
+                    </span>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>

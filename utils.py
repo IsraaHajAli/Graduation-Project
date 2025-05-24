@@ -95,3 +95,18 @@ def predict_using_w2v_bilstm(model, vectors):
     prediction = model.predict(padded, verbose=0)
     return prediction[0][0]
 
+
+import pandas as pd
+
+def get_daily_articles_from_csv(csv_path="C:\\Users\\future\\Desktop\\System5-20250412T203641Z-001\\System5\\News_Crawl\\news_data.csv"):
+    df = pd.read_csv(csv_path)
+
+    articles = []
+    for _, row in df.iterrows():
+        articles.append({
+            "title": row.get("Title", "No Title"),
+            "content": row.get("Article", "No Content"),
+            "url": row.get("URL", "#")
+        })
+    
+    return articles
