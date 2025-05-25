@@ -13,6 +13,8 @@ from utils import (
 )
 
 app = Flask(__name__)
+app.secret_key = "1492002key"  # 🔐 اكتبي أي قيمة سرية
+
 
 # Load the trained BiLSTM model
 bilstm_model = load_model("my_model.h5")
@@ -99,6 +101,11 @@ def home():
 def about():
     return render_template("about.html")
 
+
+@app.route("/contact")
+def contact():
+    return render_template("contact.html")
+
 from utils import get_daily_articles_from_csv
 
 @app.route("/daily-news")
@@ -129,6 +136,45 @@ def daily_news():
     except Exception as e:
         print("❌ Error in /daily-news:", e)
         return "Internal Server Error", 500
+
+
+
+import smtplib
+from email.mime.text import MIMEText
+from flask import request, redirect, flash
+
+@app.route("/send-message", methods=["POST"])
+def send_message():
+    try:
+        name = request.form["name"]
+        email = request.form["email"]
+        message = request.form["message"]
+
+        # إعداد الرسالة
+        body = f"Name: {name}\nEmail: {email}\n\nMessage:\n{message}"
+        msg = MIMEText(body)
+        msg["Subject"] = "New Contact Message from NewsScope"
+        msg["From"] = email
+        msg["To"] = "israajdali9@gmail.com"  # ✉️ حطي إيميلك هون
+
+        # إرسال البريد (باستخدام Gmail كمثال)
+        smtp_server = "smtp.gmail.com"
+        smtp_port = 587
+        smtp_username = "israajdali9@gmail.com"  # بريدك
+        smtp_password = "bxsj ggkq isws yzdk"  
+
+        with smtplib.SMTP(smtp_server, smtp_port) as server:
+            server.starttls()
+            server.login(smtp_username, smtp_password)
+            server.send_message(msg)
+
+        flash("Message sent successfully!", "success")
+        return redirect("/contact")
+
+    except Exception as e:
+        print("❌ Error sending message:", e)
+        flash("Error sending message. Try again later.", "error")
+        return redirect("/contact")
 
 
 @app.route("/predict", methods=["POST"])

@@ -1,10 +1,9 @@
 .news-box-container {
   position: absolute;
-  top: 140px;
+  top: 180px;
   left: 120px;
-  width: 650px;
+  width: 750px;
   max-height: 600px;
-  /* background-color: rgba(0, 0, 0, 0.6); */
   padding: 20px;
   border-radius: 12px;
   overflow: hidden;
@@ -12,30 +11,25 @@
   box-shadow: 0 10px 35px rgba(0, 0, 0, 0.2);
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(10px);
+  margin-top: 50px;
   z-index: 5;
 }
 
 
 .news-box-title {
   position: absolute;
-  top: 100px;
-  left: 40px;
+  top: 150px;
+  left: 72px;
   color: white;
-  font-size: 22px;
+  font-size: 26px;
   font-weight: bold;
-  margin-bottom: 10px;
+  border-bottom: 1px solid #ffffff36;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  margin-left: 50px;
   z-index: 10;
 }
 
-
-.news-box-title {
-  color: white;
-  font-size: 18px;
-  margin-bottom: 12px;
-  font-weight: bold;
-  border-bottom: 1px solid #ffffff22;
-  padding-bottom: 8px;
-}
 
 .news-scroll-box {
   height: 420px;
@@ -144,3 +138,20 @@
     transform: translateX(-250%);
   }
 }
+
+
+/* عند تمرير الماوس على أي خبر داخل الـ news-scroll-box */
+.news-scroll-box:hover .news-scroll-content {
+  animation-play-state: paused;
+}
+
+/* تأثير hover على الخبر */
+.news-entry:hover {
+  background-color: rgba(255, 255, 255, 0.1); /* لون خلفية خفيف */
+  border-radius: 10px;
+  cursor: pointer;
+  transform: scale(1.01);
+  transition: all 0.3s ease;
+}
+
+/* ولما يخرج الماوس، كل شيء يرجع طبيعي (بالفعل يتم تلقائيًا) */
