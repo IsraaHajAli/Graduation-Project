@@ -161,7 +161,7 @@ def send_message():
         smtp_server = "smtp.gmail.com"
         smtp_port = 587
         smtp_username = "israajdali9@gmail.com"  # بريدك
-        smtp_password = "bxsj ggkq isws yzdk"  
+        smtp_password = "lqyo dvve puil xfpm"  
 
         with smtplib.SMTP(smtp_server, smtp_port) as server:
             server.starttls()
