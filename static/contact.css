@@ -166,8 +166,9 @@ body {
 
 .toast {
   position: fixed;
-  bottom: 30px;
+  bottom: 90px;
   left: 50%;
+  margin-left: -180px;
   transform: translateX(-50%);
   background-color: #3b82f6;
   color: #ffffff;

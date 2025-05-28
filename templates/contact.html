@@ -72,13 +72,10 @@
 
             {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
-            <ul class="flashes">
-                {% for category, message in messages %}
-                <li class="{{ category }}">{{ message }}</li>
-                {% endfor %}
-            </ul>
+            <div id="toast" class="toast">{{ messages[0][1] }}</div>
             {% endif %}
             {% endwith %}
+
 
             <!-- Info Section -->
             <div class="contact-right">
