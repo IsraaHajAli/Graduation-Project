@@ -7,12 +7,15 @@ import numpy as np
 from gensim.models import Word2Vec
 import tensorflow as tf
 import joblib
+from tensorflow.keras.models import load_model
+
 
 # التحميل لمرة واحدة فقط
 nlp = spacy.load("en_core_web_sm")
 w2v_model = Word2Vec.load('C:\\Users\\future\\Desktop\\System5-20250412T203641Z-001\\System5\\Feature_Extraction\\word2vec_model.bin')
-model = tf.saved_model.load("my_model")
-infer = model.signatures["serving_default"]
+model = load_model("my_model.h5")
+
+# infer = model.signatures["serving_default"]
 
 # تنظيف النص
 def clean_text(text):
@@ -67,18 +70,18 @@ def word2vec_featureextraction(w2v_model, tokens, embedding_dim=100):
         return np.array(vectors)
 
 # التنبؤ
-def predict_using_w2v_bilstm(model, vectors):
-    MAX_SEQUENCE_LEN = 150
-    EMBEDDING_DIM = 100
+# def predict_using_w2v_bilstm(model, vectors):
+#     MAX_SEQUENCE_LEN = 150
+#     EMBEDDING_DIM = 100
 
-    # لو أقل من الطول المطلوب، نكمّل بزيرو
-    padded = np.zeros((1, MAX_SEQUENCE_LEN, EMBEDDING_DIM), dtype='float32')
-    length = min(len(vectors), MAX_SEQUENCE_LEN)
-    if length > 0:
-        padded[0, :length, :] = vectors[:length]
+#     # لو أقل من الطول المطلوب، نكمّل بزيرو
+#     padded = np.zeros((1, MAX_SEQUENCE_LEN, EMBEDDING_DIM), dtype='float32')
+#     length = min(len(vectors), MAX_SEQUENCE_LEN)
+#     if length > 0:
+#         padded[0, :length, :] = vectors[:length]
 
-    prediction = model.predict(padded, verbose=0)
-    return prediction[0][0]
+#     prediction = model.predict(padded, verbose=0)
+#     return prediction[0][0]
 
 
 
@@ -89,10 +92,17 @@ def predict_using_w2v_bilstm(model, vectors):
     # إذا vectors شكلها (n_words, 100)، لازم نحطها داخل مصفوفة padded شكلها (1, 150, 100)
     padded = np.zeros((1, MAX_SEQUENCE_LEN, EMBEDDING_DIM), dtype='float32')
     length = min(len(vectors), MAX_SEQUENCE_LEN)
+    print("👉 Number of valid vectors:", len(vectors))
+
     if length > 0:
+        print("👉 Number of valid vectors:", len(vectors))
+
         padded[0, :length, :] = vectors[:length]
 
     prediction = model.predict(padded, verbose=0)
+
+    print("Prediction raw output weeeeeeeeeeeeeeeeeeeeeeee:", prediction)
+
     return prediction[0][0]
 
 
